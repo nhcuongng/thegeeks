@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block page_content %}
+    <h3 class="text-primary" >Tạo cây mới</h3>
+    <form class="container" method="post">
+      <input type="text" name="code" class="form-control" value="" placeholder="Tên cây"> <br>
+      <input type="text" name="password" class="form-control" value="" placeholder="Password của cây"> <br>
+      {% for message in get_flashed_messages() %}
+       <p>{{ message }}</p>
+      {% endfor %}
+      <input type="submit" value="Taọ cây mới">
+      <button type="button" name="button">
+        <a href="/">Hủy,Quay về trang chủ</a>
+      </button>
+    </form>
+
+{% endblock %}

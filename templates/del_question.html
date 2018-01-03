@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block page_content %}
+    <h2 class="text-success">Xin chào thành viên {{ answer.username }}</h2>
+    <h3 class="text-primary" > Đây là câu hỏi của bạn đã gửi lên</h3>
+    <form class="container" method="post">
+        <input type="text" name="question" class="form-control" value="{{ answer.question }}">
+        <input type="text" name="answer1" class="form-control" value="{{ answer.answer1 }}">
+        <input type="text" name="answer2" class="form-control" value="{{ answer.answer2 }}">
+        <input type="text" name="answer3" class="form-control" value="{{ answer.answer3 }}">
+        <input type="text" name="answer4" class="form-control" value="{{ answer.answer4 }}">
+        <input type="text" name="right_answer" class="form-control mb-3" value="{{ answer.right_answer }}"<br>
+        {% for message in get_flashed_messages() %}
+         <p>{{ message }}</p>
+        {% endfor %}
+        <p>Bạn Chắc muốn quá không?</p>
+        <button type="button" class="btn btn-primary" name="button">
+          <a style="color: white;" href="{{ url_for('my_tree') }}">Quay Về</a>
+        </button>
+        <input type="submit" class ="btn btn-primary" value="Xóa">
+    </form>
+
+{% endblock %}

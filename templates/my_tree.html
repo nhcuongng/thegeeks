@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block page_content %}
+
+  <h1>Thành Viên Trong Nhóm {{ code }}</h1>
+  {% for owner in tree.owners %}
+      <p>{{ owner.username }}</p>
+  {% endfor %}
+  {% for message in get_flashed_messages() %}
+   <p>{{ message }}</p>
+  {% endfor %}
+  <p>Điểm Hiện Tại của Nhóm là {{ point }}</p>
+
+  <button type="button" name="button">
+    <a href="/create_question">Make Question</a>
+  </button>
+  <button type="button" name="button">
+    <a href="/show_question">Show Question and Answer it</a>
+  </button>
+  <button type="button" name="button">
+    <a href="/edit_question">Edit Your Question</a>
+  </button>
+  <button type="button" name="button">
+    <a href="/exit_tree">Exit Tree</a>
+  </button>
+{% endblock %}
