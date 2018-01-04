@@ -7,37 +7,41 @@ Trang chủ
 {% block page_content %}
 
 
-<button type="button" name="button">
-  <a href="/signin_to_tree">Tham gia vào cây</a>
-</button>
-<button type="button" name="button">
-  <a href="/signup">Đăng Ký</a>
-</button>
-<button type="button" name="button">
-  <a href="/create_tree">Tạo Cây</a>
-</button>
-<button type="button" name="button">
-  <a href="/my_tree">cây của tôi</a>
-</button>
 <div class="container mt-4">
   <div class="row">
     {% for tree in trees %}
-    <div class="col-md-3 bg-danger ml-4">
-        <p> Nhóm: {{ tree.code }}</p>
-        <p>Gồm các thành viên sau:</p>
-        {% for owner in tree.owners %}
-          {% if owner.username: %}
-            <p> {{ owner.username }}</p>
-          {% endif %}
-        {% endfor %}
-        <p>Điểm Nhóm là {{ tree.point }}</p>
-        <button type="button" class="btn btn-primary" name="button">
-          <a style="color: white" href="/signin_to_tree">Join</a>
+    <div class="col-md-3 ml-4 card card_item">
+      <div class="card-title">
+        <p class="mt-3" style="text-align: center"> {{ tree.code }}</p>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          {% for owner in tree.owners %}
+            {% if owner.username: %}
+              <div class="col-md-4 pr-1">
+                <div class="pl-1">
+                  <img src="https://raisingfilms.madeopen.co.uk/img/profile-pic.svg" alt="" width="24px" height="24px" style="border-radius: 20px" >
+                </div>
+                <p style="font-size: 0.8em"> {{ owner.username }}</p>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      <div class="">
+        <p style="text-align: center">Điểm: {{ tree.point }}</p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted" style="font-size: 0.5em">04/01/2018</small>
+        <button type="button" class="btn btn-primary" name="button" >
+          <a href="/signin_to_tree">Tham gia</a>
         </button>
+      </div>
     </div>
     {% endfor %}
   </div>
 </div>
+
 <!-- <div class="container">
   <table class="table">
     <thead class="thead-light">

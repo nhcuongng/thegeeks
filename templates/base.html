@@ -10,27 +10,69 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <link rel="stylesheet" href="../static/index.css">
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="../static/css/card.css">
+    <link rel="stylesheet" href="../static/css/heard.css">
   </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a href="/" class="navbar-brand logo">The Geeks</a>
-      <ul class="navbar-nav ml-auto">
+
+  <header style="background-color: white">
+    <p class="logo"><a href="/" title="Trang chủ">The Geeks</a></p>
+
+    <div class="infor">
+      {% if not session['loggedin'] %}
+      <div class="nav signin">
+        <a class="nav-link nav-item" href="{{ url_for('signin') }}">Đăng nhập</a>
+        <a class="nav-link nav-item" href="/signup">Đăng Ký</a>
+      </div>
+      {% else %}
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
+          <img  src="https://raisingfilms.madeopen.co.uk/img/profile-pic.svg" alt="" width="24px" height="24px" style="border-radius: 20px" >
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-menu-item" href="{{ url_for('logout') }}">Đăng xuất</a>
+        </div>
+      {% endif %}
+    </div>
+
+    <nav style="background-color: #91a7d0">
+      <ul class="nav justify-content-center">
         <li class="nav-item">
-          {% if not session['loggedin'] %}
-            <a class="nav-link" href="{{ url_for('signin') }}">Login</a>
-          {% else %}
-            <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
-            <p class="nav-link">Xin Chào {{ username }}!</p>
-          {% endif %}
-          <a href="/my_tree">Cây của Tôi</a>
+          <a class="nav-link nav-item" href="/">Trang chủ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/signin_to_tree">Tham gia vào cây</a>
+        </li class="nav-item">
+          <a class="nav-link" href="/create_tree">Tạo Cây</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/my_tree">Cây của tôi</a>
         </li>
       </ul>
     </nav>
+  </header>
+
+  <body>
 
     {% block page_content %}
     {% endblock %}
 
   </body>
+
+  <!-- <footer>
+    <div class="">
+      <h3>The Geeks</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua </p>
+    </div>
+
+    <div class="">
+      <ul>
+        <li> <a href="#">Facebook</a> </li>
+        <li> <a href="#">Instargram</a> </li>
+        <li> <a href="#">Youtube</a> </li>
+      </ul>
+    </div>
+  </footer> -->
+
 </html>
