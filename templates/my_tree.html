@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
 {% block page_content %}
-
+  <h1>Xin chào {{ username }}</h1>
   <h1>Thành Viên Trong Nhóm {{ code }}</h1>
   {% for owner in tree.owners %}
       <p>{{ owner.username }}</p>
   {% endfor %}
   {% for message in get_flashed_messages() %}
-   <p>{{ message }}</p>
+   <b>{{ message }}</b>
   {% endfor %}
   <p>Điểm Hiện Tại của Nhóm là {{ point }}</p>
 
@@ -21,6 +21,6 @@
     <a href="/edit_question">Edit Your Question</a>
   </button>
   <button type="button" name="button">
-    <a href="/exit_tree">Exit Tree</a>
+    <a href="/exit_tree"></a>
   </button>
 {% endblock %}

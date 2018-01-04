@@ -13,8 +13,7 @@ mlab.connect()
 @app.route('/')
 def index():
     trees = Tree.objects()
-    username = session['username']
-    return render_template('index.html', trees = trees, username = username)
+    return render_template('index.html', trees = trees)
 
 @app.route('/signup',methods = ['GET', 'POST'])
 def signup():
@@ -45,9 +44,11 @@ def signin():
         password = form['password']
         user = User.objects(username = username).first()
         if user is None:
-            return "username không tồn tại"
+            flash('username không tồn tại')
+            return render_template('/signin.html')
         elif user.password != password:
-            return "Password không tồn tại"
+                flash('password không tồn tại')
+                return render_template('/signin.html')
         else:
             session['loggedin'] = True
             session['username'] = username #lưu lại user đã đăng nhập
@@ -102,10 +103,14 @@ def signin_to_tree():
                 flash("Sai mật khẩu")
                 return render_template('signin_to_tree.html')
             else:
-                flash("Đăng Nhập Thành Công, bạn hãy tạo câu hỏi đầu tiên")
-                tree.update(push__owners = user)
-                user.update(tree_id = str(tree.id), code = code) #khi mà họ join vào,lưu cả code của cây, trường tree_id trong user cũng sẽ được update, note: tree_id phải đc ép sang str
-                return redirect(url_for('create_question'))
+                if user.tree_id:
+                    flash("Bạn đã Nằm Trong nhóm khác rồi")
+                    return render_template('signin.html')
+                else:
+                    flash("Đăng Nhập Thành Công, bạn hãy tạo câu hỏi đầu tiên")
+                    tree.update(push__owners = user)
+                    user.update(tree_id = str(tree.id), code = code) #khi mà họ join vào,lưu cả code của cây, trường tree_id trong user cũng sẽ được update, note: tree_id phải đc ép sang str
+                    return redirect(url_for('create_question'))
     else:
         flash('Bạn Chưa Đăng Nhập')
         return redirect(url_for('signin')) # bắt họ sign in nếu chưa sigin
@@ -137,7 +142,7 @@ def create_question():
                                 username = username,
                                 question = question, tree_id = str(user.tree_id) )
             new_answer.save()
-            tree.update(push__answers = new_answer)
+            flash('Tạo câu hỏi thành công')
             return redirect(url_for('my_tree'))
 
     else:
@@ -161,7 +166,7 @@ def show_question():
                     if username != question.username:
                         return render_template('show_question.html',username = username, question = question,code = user.code)
                     else:
-                        flash("Nếu nhóm chỉ có 1 thành viên thì hãy add thêm,nếu không vui lòng click lại")
+                        flash("Nếu nhóm chỉ có 1-3 thành viên thì hãy add thêm,nếu không vui lòng click lại")
                         return redirect(url_for('my_tree'))
                 elif request.method == 'POST':
                     form = request.form
@@ -195,7 +200,7 @@ def my_tree():
         else:
             tree = Tree.objects().with_id(user.tree_id)
             if tree is not None:
-                return render_template('my_tree.html', tree = tree, point = tree.point, code = user.code)
+                return render_template('my_tree.html', tree = tree, point = tree.point, code = user.code, username = username)
             else:
                 return redirect(url_for('signin_to_tree'))
     else:
@@ -251,8 +256,20 @@ def del_question():
     else:
         flash('Bạn Chưa Đăng Nhập')
         return redirect(url_for('signin'))
-
-
+# @app.route('/exit_tree')
+# def exit_tree():
+#     if session.get('loggedin', False):
+#         username = session['username']
+#         user = User.objects(username = username).first()
+#
+#
+#
+#         user.update(tree_id = '')
+#         flash("Thoát Nhóm thành công")
+#         return redirect(url_for('index'))
+#     else:
+#         flash('Bạn Chưa Đăng Nhập')
+#         return redirect(url_for('signin'))
 
 if __name__ == '__main__':
   app.run(debug=True)
