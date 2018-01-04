@@ -3,7 +3,6 @@
 {% block page_content %}
     <h3 class="text-primary" >Đăng Ký</h3>
     <form class="container" method="post">
-      <input type="text" name="image" class="form-control" value="" placeholder="Link ảnh " >
       <input type="text" name="username" class="form-control" value="" placeholder="Tên "> <br>
       <input type="text" name="password" class="form-control" value="" placeholder="Mật khẩu "> <br>
       {% for message in get_flashed_messages() %}

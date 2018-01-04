@@ -5,6 +5,7 @@ from user import User
 from tree import Tree
 from answer import Answers
 from random import choice
+from image import Image
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "Csb~a J]?E3z_mx"
 mlab.connect()
@@ -63,10 +64,12 @@ def create_tree():
             code = form['code']
             password = form['password']
             username = session['username']
+            images = Image.objects()
+            image = choice(images)
             user = User.objects(username = username).first()
             check_tree = Tree.objects(code = code).first()
             if check_tree is None:
-                new_tree = Tree(code=code, password=password, owners = [username], point = 0)
+                new_tree = Tree(code=code, password=password, owners = [username], point = 0, image = image['image'])
                 new_tree.save()
                 flash("Tạo Cây Thành công, mời bạn đăng nhập lại vào cây vừa tạo")
                 return redirect(url_for('signin_to_tree'))
