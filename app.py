@@ -105,7 +105,7 @@ def signin_to_tree():
             else:
                 if user.tree_id:
                     flash("Bạn đã Nằm Trong nhóm khác rồi")
-                    return render_template('signin.html')
+                    return render_template('signin_to_tree.html')
                 else:
                     flash("Đăng Nhập Thành Công, bạn hãy tạo câu hỏi đầu tiên")
                     tree.update(push__owners = user)
