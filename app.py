@@ -80,7 +80,7 @@ def create_tree():
 @app.route('/logout')
 def logout():
     session['loggedin'] = False
-    flash('Bạn Muốn Đăng nhập lại ko?')
+    flash('Bạn Muốn Đăng nhập lại không?')
     return redirect(url_for('signin'))
 
 
