@@ -12,7 +12,7 @@ Trang chủ
     {% for tree in trees %}
     <div class="col-md-3 ml-4 card card_item">
       <div class="card-title">
-        <p class="mt-3" style="text-align: center"> {{ tree.code }}</p>
+        <p class="mt-3" style="text-align: center; font-family: 'Vibur', cursive;"> {{ tree.code }}</p>
       </div>
       <div class="card-body">
         <div class="row">
@@ -22,15 +22,22 @@ Trang chủ
                 <div class="pl-1">
                   <img src="https://raisingfilms.madeopen.co.uk/img/profile-pic.svg" alt="" width="24px" height="24px" style="border-radius: 20px" >
                 </div>
-                <p style="font-size: 0.8em"> {{ owner.username }}</p>
+                <p style="font-size: 0.8em; "> {{ owner.username }}</p>
               </div>
             {% endif %}
           {% endfor %}
         </div>
       </div>
+
+      {% if tree.point < 0 %}
       <div class="">
-        <p style="text-align: center">Điểm: {{ tree.point }}</p>
+        <p style="text-align: center; color: red">Điểm: {{ tree.point }}</p>
       </div>
+      {% else %}
+      <div class="">
+        <p style="text-align: center; color: blue">Điểm: {{ tree.point }}</p>
+      </div>
+      {% endif %}
       <div class="card-footer">
         <small class="text-muted" style="font-size: 0.5em">04/01/2018</small>
         <button type="button" class="btn btn-primary" name="button" >

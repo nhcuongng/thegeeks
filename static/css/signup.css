@@ -1,0 +1,49 @@
+#signup{
+    width: 350px;
+    height: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #f7cac9;
+    margin-top: 30px;
+}
+
+.signup-title{
+  text-align: center;
+  font-family: 'Vibur', cursive;
+  padding-top: 20px;
+}
+
+.signup-img{
+  width: 90px;
+  height: 70px;
+  margin-left: 38%;
+}
+
+.signup-signup{
+  width: 230px;
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+  margin-top: 10px;
+}
+
+.sginup-signup :active{
+  background-color: black;
+}
+
+.form-control{
+  display: inline;
+  width: 100%;
+  border-radius: 25px;
+  border: None;
+  margin-bottom: 15px;
+}
+
+footer{
+  text-align: center;
+  margin-top: 10px;
+}
+
+footer span{
+  font-size: 0.75em;
+}

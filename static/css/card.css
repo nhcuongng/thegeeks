@@ -1,5 +1,6 @@
 .card_item{
   border-radius: 20px;
+  margin-top: 20px;
 }
 
 .card_item:hover{

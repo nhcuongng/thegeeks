@@ -44,10 +44,10 @@ def signin():
         password = form['password']
         user = User.objects(username = username).first()
         if user is None:
-            flash('username không tồn tại')
+            flash('Username không tồn tại')
             return render_template('/signin.html')
         elif user.password != password:
-                flash('password không tồn tại')
+                flash('Password không tồn tại')
                 return render_template('/signin.html')
         else:
             session['loggedin'] = True
@@ -80,7 +80,7 @@ def create_tree():
 @app.route('/logout')
 def logout():
     session['loggedin'] = False
-    flash('Bạn Muốn Đăng nhập lại ko?')
+    flash('Bạn có muốn Đăng nhập lại không?')
     return redirect(url_for('signin'))
 
 
@@ -105,7 +105,7 @@ def signin_to_tree():
             else:
                 if user.tree_id:
                     flash("Bạn đã Nằm Trong nhóm khác rồi")
-                    return render_template('signin.html')
+                    return render_template('signin_to_tree.html')
                 else:
                     flash("Đăng Nhập Thành Công, bạn hãy tạo câu hỏi đầu tiên")
                     tree.update(push__owners = user)

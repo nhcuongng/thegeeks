@@ -1,0 +1,18 @@
+.totree{
+  width: 350px;
+  height: 250px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #f7cac9;
+  margin-top: 30px;
+}
+
+.totree p{
+  text-align: center;
+  font-size: 1.5em;
+  padding-top: 2%;
+}
+
+.form-control{
+  border-radius: 10px;
+}

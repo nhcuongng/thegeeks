@@ -1,17 +1,32 @@
 {% extends 'base.html' %}
 
 {% block page_content %}
-    <h3 class="text-primary" >Đăng Nhập</h3>
-    <form class="container" method="post">
-      <input type="text" name="username" class="form-control" value="" placeholder="Tên "> <br>
-      <input type="text" name="password" class="form-control" value="" placeholder="Mật khẩu "> <br>
-      {% for message in get_flashed_messages() %}
-       <p>{{ message }}</p>
-      {% endfor %}
-    <input type="submit" name="" value="Đăng Nhập">
-    <button type="button" name="button">
+<link rel="stylesheet" href="../static/css/signin.css">
+
+  <div id="signin">
+
+    <header>
+      <h3 class="signin-title" >Đăng Nhập</h3>
+      <img class="signin-img" src="https://media.giphy.com/media/rxtrtvYVWOAx2/giphy.gif" alt="">
+      <!-- <img class="signin-img" src="https://t00.deviantart.net/hP7ifWFEZBm7C4fcN9msyUr4SfM=/fit-in/700x350/filters:fixed_height(100,100):origin()/pre00/99d4/th/pre/f/2014/052/4/1/giggles__by_retro35923-d77fdmo.png" alt=""> -->
+    </header>
+
+    <div class="signin-signin">
+      <form class="" method="post">
+        <input type="text" name="username" class="form-control" value="" placeholder="Tên" required> <br>
+        <input type="password" name="password" class="form-control" value="" placeholder="Mật khẩu" required> <br>
+        <input type="submit" name="" class="form-control" value="Đăng Nhập" style=" cursor: pointer; background-color: #91a7d0; width: 50%; margin-left: 25%">
+        {% for message in get_flashed_messages() %}
+         <p style="text-align:center">{{ message }}</p>
+        {% endfor %}
+      </form>
+    </div>
+
+    <footer>
+      <span>Chưa có tài khoản</span>
       <a href="/signup">Đăng Ký</a>
-    </button>
-    </form>
+    </footer>
+
+  </div>
 
 {% endblock %}

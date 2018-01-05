@@ -1,0 +1,57 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+
+.mytree{
+  width: 250px;
+  height: 300px;
+  background-color: #f7cac9;
+  border-radius: 150px;
+  /* margin-left: auto;
+  margin-right: auto; */
+  margin-top: 30px;
+}
+
+.mytree-title{
+  font-family: 'Vibur', cursive;
+  text-align: center;
+  padding-top: 5%;
+  font-size: 1.5em;
+  font-weight: 100;
+}
+
+.mytree-member{
+  margin-bottom: 5%;
+}
+
+.mytree-member-img{
+  background-color: white;
+}
+
+.row{
+  margin: 0;
+  padding-left: 10%;
+  padding-right: 10%
+}
+
+.row span{
+  font-size: 0.85em;
+}
+
+.mytree-point{
+  text-align: center;
+  padding-top: 20px;
+  margin: 0px
+}
+
+.option{
+  margin-top: 10%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.option a:hover{
+  color: #f7cac9;
+  text-decoration: none;
+}

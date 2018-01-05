@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 
 {% block page_content %}
-    <h2 class="text-success">Xin chào thành viên {{ answer.username }}</h2>
+  <div class="question">
+    <h3 class="text-success">Xin chào thành viên {{ answer.username }}</h3>
     <h3 class="text-primary" > Đây là câu hỏi của bạn đã gửi lên</h3>
     <form class="container" method="post">
         <input type="text" name="question" class="form-control" value="{{ answer.question }}">
@@ -18,5 +19,7 @@
           <a style="color: white;" href="/del_question">Xóa</a>
         </button>
     </form>
+  </div>
+
 
 {% endblock %}

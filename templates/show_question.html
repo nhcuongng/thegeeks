@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 
 {% block page_content %}
-    <h2 class="text-success">Xin chào thành viên {{ username }}</h2>
+
+  <div class="question">
+    <h3 class="text-success">Xin chào thành viên {{ username }}</h2>
     <h3 class="text-primary" > Câu hỏi về thành viên {{question.username}} trong nhóm {{ code }}</h3>
 
     <form class="container" method="post">
@@ -16,5 +18,7 @@
       <input type="text" name="right_answer" class="form-control" value="" placeholder="Đáp án"> <br>
       <input type="submit" value="Nhập Câu Trả Lời">
     </form>
+  </div>
+
 
 {% endblock %}

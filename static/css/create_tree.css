@@ -1,0 +1,38 @@
+.create_tree{
+  width: 350px;
+  height: 250px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #f7cac9;
+  margin-top: 30px;
+}
+
+.create_tree p{
+  text-align: center;
+  font-size: 1.5em;
+  padding-top: 2%;
+}
+
+.form-control{
+  border-radius: 10px;
+}
+
+.control-1{
+  width: 60%;
+  float: left;
+  cursor: pointer;
+}
+
+.control-2{
+  width: 35%;
+  float: right;
+  cursor: pointer;
+}
+
+.control-2 a{
+  color: black;
+}
+
+.control-2 a:hover{
+  text-decoration: none;
+}

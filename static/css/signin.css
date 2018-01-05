@@ -1,0 +1,45 @@
+#signin{
+  width: 350px;
+  height: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #f7cac9;
+  margin-top: 30px;
+}
+
+.signin-title{
+  text-align: center;
+  font-family: 'Vibur', cursive;
+  padding-top: 20px;
+}
+
+.signin-img{
+  width: 90px;
+  height: 70px;
+  margin-left: 38%;
+}
+
+.signin-signin{
+  width: 230px;
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+  margin-top: 10px;
+}
+
+.form-control{
+  display: inline;
+  width: 100%;
+  border-radius: 25px;
+  border: None;
+  margin-bottom: 15px;
+}
+
+footer{
+  text-align: center;
+  margin-top: 20px;
+}
+
+footer span{
+  font-size: 0.75em;
+}

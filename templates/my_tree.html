@@ -1,26 +1,40 @@
 {% extends 'base.html' %}
 
 {% block page_content %}
-  <h1>Xin chào {{ username }}</h1>
-  <h1>Thành Viên Trong Nhóm {{ code }}</h1>
-  {% for owner in tree.owners %}
-      <p>{{ owner.username }}</p>
-  {% endfor %}
-  {% for message in get_flashed_messages() %}
-   <b>{{ message }}</b>
-  {% endfor %}
-  <p>Điểm Hiện Tại của Nhóm là {{ point }}</p>
+<link rel="stylesheet" href="../static/css/mytree.css">
+  <!-- <h1>Xin chào {{ username }}</h1> -->
 
-  <button type="button" name="button">
-    <a href="/create_question">Make Question</a>
-  </button>
-  <button type="button" name="button">
-    <a href="/show_question">Show Question and Answer it</a>
-  </button>
-  <button type="button" name="button">
-    <a href="/edit_question">Edit Your Question</a>
-  </button>
-  <button type="button" name="button">
+  <div class="row">
+    <div class="mytree col-md-6 ">
+      <p class="mytree-title">{{ code }}</p>
+      <div class="row">
+        {% for owner in tree.owners %}
+          {% if owner.username: %}
+            <div class="col-md-4 mytree-member">
+              <img class="mytree-member-img" src="https://raisingfilms.madeopen.co.uk/img/profile-pic.svg" alt="" width="24px" height="24px" style="border-radius: 20px" title="{{ owner.username }}" >
+              <span>{{ owner.username }}</span>
+            </div>
+            <br>
+          {% endif %}
+        {% endfor %}
+      </div>
+      {% for message in get_flashed_messages() %}
+       <p style="text-align:center">{{ message }}</p>
+      {% endfor %}
+      <p class="mytree-point">Điểm của nhóm: {{ point }}</p>
+    </div>
+
+    <div class="option col-md-4">
+        <a href="/create_question">Tạo câu hỏi</a> <br> <br>
+        <a href="/show_question">Xem và trả lời câu hỏi</a> <br> <br>
+        <a href="/edit_question">Chỉnh sửa câu hỏi của bạn</a>
+      </ul>
+    </div>
+
+  </div>
+
+
+  <!-- <button type="button" name="button">
     <a href="/exit_tree"></a>
-  </button>
+  </button> -->
 {% endblock %}
