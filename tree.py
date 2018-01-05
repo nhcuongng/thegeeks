@@ -6,3 +6,4 @@ class Tree(Document):
     password = StringField()
     owners = ListField(ReferenceField('User'))
     point = IntField()
+    image = StringField()

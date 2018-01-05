@@ -5,6 +5,7 @@ from user import User
 from tree import Tree
 from answer import Answers
 from random import choice
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "Csb~a J]?E3z_mx"
 mlab.connect()
@@ -63,6 +64,8 @@ def create_tree():
             code = form['code']
             password = form['password']
             username = session['username']
+            # images = Image.objects()
+            # image = choice(images)
             user = User.objects(username = username).first()
             check_tree = Tree.objects(code = code).first()
             if check_tree is None:
@@ -80,7 +83,11 @@ def create_tree():
 @app.route('/logout')
 def logout():
     session['loggedin'] = False
+<<<<<<< HEAD
     flash('Bạn có muốn Đăng nhập lại không?')
+=======
+    flash('Bạn Muốn Đăng nhập lại không?')
+>>>>>>> cee6133029d954f7f64ebea0fe6758edadd36e3f
     return redirect(url_for('signin'))
 
 
@@ -256,20 +263,21 @@ def del_question():
     else:
         flash('Bạn Chưa Đăng Nhập')
         return redirect(url_for('signin'))
-# @app.route('/exit_tree')
-# def exit_tree():
-#     if session.get('loggedin', False):
-#         username = session['username']
-#         user = User.objects(username = username).first()
-#
-#
-#
-#         user.update(tree_id = '')
-#         flash("Thoát Nhóm thành công")
-#         return redirect(url_for('index'))
-#     else:
-#         flash('Bạn Chưa Đăng Nhập')
-#         return redirect(url_for('signin'))
+@app.route('/exit_tree')
+def exit_tree():
+    if session.get('loggedin', False):
+        username = session['username']
+        user = User.objects(username = username).first()
+        tree = Tree.objects().with_id(user.tree_id)
+        answer = Answers.objects(username = username).first()
+        tree.update(pull__owners = user)
+        user.update(tree_id ='',code ='')
+        answer.delete()
+        flash("Thoát Nhóm thành công")
+        return redirect(url_for('signin_to_tree'))
+    else:
+        flash('Bạn Chưa Đăng Nhập')
+        return redirect(url_for('signin'))
 
 if __name__ == '__main__':
   app.run(debug=True)
