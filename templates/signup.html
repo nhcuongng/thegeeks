@@ -14,8 +14,8 @@
     <div class="signup-signup">
       <form class="container" method="post">
         <input type="text" name="username" class="form-control" value="" placeholder="Tên đăng nhập" required> <br>
-        <input type="password" name="password" class="form-control" value="" placeholder="Mật khẩu" required> <br>
-        <input type="text" name="password" class="form-control" value="" placeholder="Nhập lại mật khẩu" required> <br>
+        <input type="password" name="password1" class="form-control" value="" placeholder="Mật khẩu" required> <br>
+        <input type="password" name="password2" class="form-control" value="" placeholder="Nhập lại mật khẩu" required> <br>
 
         {% for message in get_flashed_messages() %}
          <p>{{ message }}</p>

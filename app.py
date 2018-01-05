@@ -23,13 +23,17 @@ def signup():
     elif request.method == "POST":
         form = request.form
         username = form['username']
-        password = form['password']
+        password1 = form['password1']
+        password2 = form['password2']
         user = User.objects(username = username).first()
-        if user is None:
-            new_user = User(username=username, password=password, tree_id = "")
+        if user is None and password1 == password2:
+            new_user = User(username=username, password=password1, tree_id = "")
             new_user.save()
             flash("Đăng ký Thành công")
             return redirect(url_for('signin'))
+        elif password1 != password2:
+            flash('Mật Khẩu Không Khớp, vui lòng nhập lại')
+            return render_template('signup.html',username = username)
         else:
             flash("Đã tồn tại")
             return render_template('signup.html')
@@ -68,14 +72,18 @@ def create_tree():
             # image = choice(images)
             user = User.objects(username = username).first()
             check_tree = Tree.objects(code = code).first()
-            if check_tree is None:
-                new_tree = Tree(code=code, password=password, owners = [username], point = 0)
-                new_tree.save()
-                flash("Tạo Cây Thành công, mời bạn đăng nhập lại vào cây vừa tạo")
-                return redirect(url_for('signin_to_tree'))
+            if user.tree_id:
+                flash("Bạn Hiện Tại Không Thể tạo nhóm,nếu muốn tạo hay thoát khỏi nhóm hiện tại")
+                return render_template('create_tree.html')
             else:
-                flash("Tên cây đã được sử dụng")
-                return redirect(url_for('create_tree'))
+                if check_tree is None:
+                    new_tree = Tree(code=code, password=password, owners = [username], point = 0)
+                    new_tree.save()
+                    flash("Tạo Cây Thành công, mời bạn đăng nhập lại vào cây vừa tạo")
+                    return redirect(url_for('signin_to_tree'))
+                else:
+                    flash("Tên cây đã được sử dụng")
+                    return redirect(url_for('create_tree'))
     else:
         flash('Bạn Chưa Đăng Nhập')
         return redirect(url_for('signin'))
