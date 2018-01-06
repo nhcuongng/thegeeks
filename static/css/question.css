@@ -1,11 +1,27 @@
+
+body{
+  background-color:#CCC ;
+}
+
 .question{
-  width: 600px;
-  height: auto;
+  width: 700px;
+  height: 500px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 2%;
 }
 
 .question h3{
   text-align: center;
+
+}
+
+h2{
+  border-top: 0.7px solid #CCC;
+  border-bottom: 0.7px solid #CCC;
+  text-align: center;
+  padding: 10px 0px 10px 0px;
+}
+
+ol li {
+  font-size: 25px;
 }

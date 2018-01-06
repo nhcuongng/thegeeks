@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
 
+{% block css_link %}
+<link rel="stylesheet" href="../static/css/question.css">
+{% endblock %}
+
 {% block page_content %}
 
-  <div class="question">
-    <h3 class="text-danger">Xin chào {{ username }} Nhóm {{ code }}</h3>
+  <div class="question" style="margin-bottom: 40px;">
+    <h3 class="text-danger" style="border-top: 0.7px solid #CCC; border-bottom: 0.7px solid #CCC; padding: 10px 0px 10px 0px;">Xin chào {{ username }} Nhóm {{ code }}</h3>
     {% for message in get_flashed_messages() %}
-     <p>{{ message }}</p>
+     <small style="color: red">{{ message }}</small>
     {% endfor %}
     <h3 class="text-primary" > Tạo câu hỏi nào</h3>
     <form class="container" method="post">
@@ -15,7 +19,9 @@
       <input type="text" name="answer3" class="form-control" value="" placeholder="Câu trả lời 3"> <br>
       <input type="text" name="answer4" class="form-control" value="" placeholder="Câu trả lời 4"> <br>
       <input type="text" name="right_answer" class="form-control" value="" placeholder="Đáp án (chọn số từ 1 - 4)"> <br>
-      <input type="submit" value="Thêm câu hỏi">
+      <button class="btn btn-primary" type="submit" name="button">
+        Thêm Câu Hỏi
+      </button>
     </form>
   </div>
 

@@ -4,7 +4,10 @@
 <link rel="stylesheet" href="../static/css/create_tree.css">
   <div class="create_tree">
     <header>
-      <p >Tạo cây mới</p>
+      <div class="container mb-3" style="text-align: center">
+        <p >Tạo cây mới</p>
+        <img src="http://dantricdn.com/pHY2RLD1xoL70pWhyidQ193TycJUo/Image/2015/01/mh_tettrongcay-c9599.jpg" alt="">
+      </div>
     </header>
 
     <form class="container" method="post">
@@ -12,13 +15,14 @@
       <input type="password" name="password" class="form-control" value="" placeholder="Mật khẩu của cây"> <br>
 
       {% for message in get_flashed_messages() %}
-       <p>{{ message }}</p>
+       <small style="color: red">{{ message }}</small>
       {% endfor %}
 
       <input type="submit"  class="form-control control-1" value="Taọ cây mới">
       <button type="button" class="form-control control-2" name="button" >
         <a href="/">Hủy</a>
-      </button>
+      </button><br><br>
+      <small style="red">Note: *Nếu bạn đã trong nhóm khác rồi không thể tạo nhóm mới</small>
     </form>
 
   </div>

@@ -1,23 +1,29 @@
 {% extends 'base.html' %}
 
+{% block css_link %}
+<link rel="stylesheet" href="../static/css/question.css">
+{% endblock %}
+
 {% block page_content %}
-  <div class="question">
+  <div class="question my-4" style="width: 500px; height: 500px">
     <h3 class="text-success">Xin chào thành viên {{ answer.username }}</h3>
     <h3 class="text-primary" > Đây là câu hỏi của bạn đã gửi lên</h3>
     <form class="container" method="post">
-        <input type="text" name="question" class="form-control" value="{{ answer.question }}">
-        <input type="text" name="answer1" class="form-control" value="{{ answer.answer1 }}">
-        <input type="text" name="answer2" class="form-control" value="{{ answer.answer2 }}">
-        <input type="text" name="answer3" class="form-control" value="{{ answer.answer3 }}">
-        <input type="text" name="answer4" class="form-control" value="{{ answer.answer4 }}">
+        <input type="text" name="question" class="form-control" value="{{ answer.question }}"><br>
+        <input type="text" name="answer1" class="form-control" value="{{ answer.answer1 }}"><br>
+        <input type="text" name="answer2" class="form-control" value="{{ answer.answer2 }}"><br>
+        <input type="text" name="answer3" class="form-control" value="{{ answer.answer3 }}"><br>
+        <input type="text" name="answer4" class="form-control" value="{{ answer.answer4 }}"><br>
         <input type="text" name="right_answer" class="form-control mb-3" value="{{ answer.right_answer }}"<br>
-        {% for message in get_flashed_messages() %}
-         <p>{{ message }}</p>
-        {% endfor %}
-        <input type="submit" class ="btn btn-primary" value="Cập Nhật">
-        <button type="submit" class ="btn btn-primary" name="button">
-          <a style="color: white;" href="/del_question">Xóa</a>
-        </button>
+        <div class="container" style="text-align: center">
+          {% for message in get_flashed_messages() %}
+           <small>{{ message }}</small><br>
+          {% endfor %}
+          <input type="submit" class ="btn btn-primary" value="Cập Nhật">
+          <button type="submit" class ="btn btn-primary" name="button">
+            <a style="color: white;" href="/del_question">Xóa</a>
+          </button>
+        </div>
     </form>
   </div>
 

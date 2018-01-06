@@ -1,32 +1,39 @@
 {% extends 'base.html' %}
 
-{% block page_content %}
+{% block title %}
+Đăng Nhập
+{% endblock %}
+
+{% block css_link %}
 <link rel="stylesheet" href="../static/css/signin.css">
+{% endblock %}
 
-  <div id="signin">
-
+{% block page_content %}
+<div class="container more">
+  <b style="font-size: 30px">Hãy Nhập Tài Khoản Của Bạn</b>
+</div>
+<div id="signin">
     <header>
       <h3 class="signin-title" >Đăng Nhập</h3>
-      <img class="signin-img" src="https://media.giphy.com/media/rxtrtvYVWOAx2/giphy.gif" alt="">
+      <img class="signin-img" src="https://lc-www-live-s.legocdn.com/r/www/r/friends/-/media/franchises/friends2014/explore/sea/bottom%20section/summer%20920x568/en_brave_friends_capture_the_fun_summer-01.png?l.r2=1287126075" alt="">
       <!-- <img class="signin-img" src="https://t00.deviantart.net/hP7ifWFEZBm7C4fcN9msyUr4SfM=/fit-in/700x350/filters:fixed_height(100,100):origin()/pre00/99d4/th/pre/f/2014/052/4/1/giggles__by_retro35923-d77fdmo.png" alt=""> -->
     </header>
-
-    <div class="signin-signin">
+    <div class="container">
       <form class="" method="post">
         <input type="text" name="username" class="form-control" value="" placeholder="Tên" required> <br>
         <input type="password" name="password" class="form-control" value="" placeholder="Mật khẩu" required> <br>
-        <input type="submit" name="" class="form-control" value="Đăng Nhập" style=" cursor: pointer; background-color: #91a7d0; width: 50%; margin-left: 25%">
-        {% for message in get_flashed_messages() %}
-         <p style="text-align:center">{{ message }}</p>
-        {% endfor %}
+        <div class="" style="text-align: center">
+          <input type="submit" name="" class="form-control" value="Đăng Nhập" style=" cursor: pointer; background-color: #91a7d0; width: 40%;">
+        </div>
+        <div class="container" style="text-align: center">
+          {% for message in get_flashed_messages() %}
+           <small style="text-align:center; color: red;">{{ message }}</small>
+          {% endfor %}<br>
+          <span>Chưa có tài khoản?</span>
+          <a href="/signup"> Đăng Ký</a>
+        </div>
       </form>
     </div>
-
-    <footer>
-      <span>Chưa có tài khoản</span>
-      <a href="/signup">Đăng Ký</a>
-    </footer>
-
   </div>
 
 {% endblock %}

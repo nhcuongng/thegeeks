@@ -2,40 +2,90 @@
 
 {% block page_content %}
 <link rel="stylesheet" href="../static/css/mytree.css">
-  <!-- <h1>Xin chào {{ username }}</h1> -->
 
-  <div class="row">
-    <div class="mytree col-md-6 ">
-      <p class="mytree-title">{{ code }}</p>
-      <div class="row">
-        {% for owner in tree.owners %}
-          {% if owner.username: %}
-            <div class="col-md-4 mytree-member">
-              <img class="mytree-member-img" src="https://raisingfilms.madeopen.co.uk/img/profile-pic.svg" alt="" width="24px" height="24px" style="border-radius: 20px" title="{{ owner.username }}" >
-              <span>{{ owner.username }}</span>
-            </div>
-            <br>
-          {% endif %}
+<div class="container-fluid mt-2">
+    <div class="row">
+      <div class="mytree col-md-5">
+        <p class="mytree-title">{{ code }}</p>
+        <div class="row">
+          {% for owner in tree.owners %}
+            {% if owner.username: %}
+              <div class="col-md-4 mytree-member">
+                <img class="mytree-member-img" src="https://raisingfilms.madeopen.co.uk/img/profile-pic.svg" alt="" width="24px" height="24px" style="border-radius: 20px" title="{{ owner.username }}" >
+                <span>{{ owner.username }}</span>
+              </div>
+              <br>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <p class="mytree-point"> <b>Điểm của nhóm: {{ point }}</b> </p>
+        {% for message in get_flashed_messages() %}
+         <p style="text-align:center"> <b>{{ message }}</b> </p>
         {% endfor %}
       </div>
-      {% for message in get_flashed_messages() %}
-       <p style="text-align:center">{{ message }}</p>
-      {% endfor %}
-      <p class="mytree-point">Điểm của nhóm: {{ point }}</p>
+      <div class="col-md-7 pl-5" style="text-align: center" >
+        <div class="row mt-3">
+          <small> <i>*Thanh hiển thị điểm tương đối</i> </small>
+          {% if point < 0 %}
+          <div class="progress container">
+            <div class="progress-bar bg-danger" role="progressbar" style="width: 4%" aria-valuenow="4" aria-valuemin="0" aria-valuemax="100">{{ point }}đ</div>
+          </div><br>
+          <p>Tệ quá tình bạn của bạn vứt đi được rồi <i class="fa fa-frown-o" aria-hidden="true"></i></p>
+          <img class=" img-thumbnail container pt-3 img" src="http://www.viendongdaily.com/res/fckfolder/Image/NewEditor/2017/4/13-Apr-2017/datthit.jpg" alt="">
+          {% elif point < 10  %}
+          <div class="progress container">
+            <div class="progress-bar bg-warning" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">{{ point }}đ</div>
+          </div><br>
+          <p>Một Chút nữa thôi để tình bạn của bạn phát triển thêm nữa <i class="fa fa-heartbeat" aria-hidden="true"></i></p>
+          <img class=" img-thumbnail container pt-3 img" src="https://thayhieu.net/wp-content/uploads/2016/05/hai-hat-mam.jpg" alt="">
+          {% elif point < 20  %}
+          <div class="progress container">
+            <div class="progress-bar bg-dark" role="progressbar" style="width: 45" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">{{ point }}đ</div>
+          </div><br>
+          <p>Có vẻ như tình bạn của bạn đang tương đối ổn định <i class="fa fa-heart" aria-hidden="true"></i></p>
+          <img class=" img-thumbnail container pt-3 img" src="http://vuontuongdanang.com/wp-content/uploads/2016/05/C%C3%A1ch-l%C3%A0m-h%E1%BA%A1t-gi%E1%BB%91ng-n%E1%BA%A3y-m%E1%BA%A7m.jpg" alt="">
+          {% elif point < 30 %}
+          <div class="progress container">
+            <div class="progress-bar bg-infor" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">{{ point }}đ</div>
+          </div><br>
+          <p>Tình cảm của các bạn đang ngày càng thăng hoa <i class="fa fa-handshake-o" aria-hidden="true"></i></p>
+          <img class=" img-thumbnail container pt-3 img" src="http://nhanchinhkhang.vn/wp-content/uploads/2016/11/can-sa.jpg" alt="">
+          {% elif point < 40%}
+          <div class="progress container">
+            <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">{{ point }}đ</div>
+          </div><br>
+          <p>Tình cảm của các bạn đang sắp nổ bùm như 1 trái <i class="fa fa-bomb" aria-hidden="true"></i> vậy </p>
+          <img class=" img-thumbnail container pt-3 img" src="https://g.vatgia.vn/gallery_img/14/sit1446638690.jpg" alt="">
+          {% elif point == 40 %}
+          <div class="progress container-fluid">
+            <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ point }}đ</div>
+          </div><br>
+          <p><i class="fa fa-female" aria-hidden="true"></i><i class="fa fa-heart" aria-hidden="true"></i><i class="fa fa-male" aria-hidden="true"></i> Các bạn sinh ra là để dành cho nhau</p>
+          <img class=" img-thumbnail container pt-3 img" src="http://choiphongthuy.com/uploads/images/010911thoisucaythi.jpg" alt="">
+          {% endif %}
+        </div>
+      </div>
     </div>
-
-    <div class="option col-md-4">
-        <a href="/create_question">Tạo câu hỏi</a> <br> <br>
-        <a href="/show_question">Xem và trả lời câu hỏi</a> <br> <br>
-        <a href="/edit_question">Chỉnh sửa câu hỏi của bạn</a>
-        <a href="/exit_tree"></a>
-      </ul>
-    </div>
-
-  </div>
-
-
-  <!-- <button type="button" name="button">
-    <a href="/exit_tree"></a>
-  </button> -->
+</div>
+<div class="option container">
+      <button type="button" class="btn btn-primary" name="button">
+        <a href="/create_question">Tạo câu hỏi</a>
+      </button>
+      <button type="button" class="btn btn-primary" name="button">
+        <a href="/show_question">Xem và trả lời câu hỏi</a>
+      </button>
+      <button type="button" class="btn btn-primary" name="button">
+        <a href="/edit_question">Chỉnh Sửa Câu Trả Lời Gần Nhất</a>
+      </button>
+      <button type="button" class="btn btn-primary" name="button">
+        <a href="/exit_tree">Thoát Khỏi Nhóm</a>
+      </button>
+</div>
+<div class=" bg-light container my-4"  style="width: 50%;">
+    <strong>Hướng Dẫn Chơi</strong><br>
+    <small>*Tạo Câu Hỏi Mới: Người Dùng sẽ tạo câu hỏi mới cùng với đáp án của họ</small><br><br>
+    <small>*Xem và Trả Lời câu Hỏi: Người dùng sẽ được phép xem và trả lời câu hỏi của người khác <br> <b>nếu đúng được cộng 1đ</b>, <b>sai bị trừ 1đ </b> </small><br><br>
+    <small>*Chỉnh Sửa: Người dùng đc phép chỉnh sửa câu trả lởi gửi lên gần nhất</small><br><br>
+    <small>*Thoát khỏi nhóm: Nếu bạn muốn tham gia nhóm khác thì cần phải thực hiện yêu cầu này</small><br><br>
+</div>
 {% endblock %}

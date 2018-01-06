@@ -3,15 +3,19 @@
 {% block page_content %}
 <link rel="stylesheet" href="../static/css/signin_to_tree.css">
 
-  <div class="totree">
-    <p class="totree-title">Nhập thông tin của cây</p>
+  <div class="totree container">
+    <h3 class="totree-title mt-4" style="display: inline-flex;">Nhập thông tin của cây</h3>
+    <small></small>
+    <img src="https://openclipart.org/image/2400px/svg_to_png/263892/Colorful-Natural-Tree.png" alt="">
     <form class="container" method="post">
-      <input type="text" name="code" class="form-control" value="" placeholder="Code"> <br>
-      <input type="text" name="password" class="form-control" value="" placeholder="Mật khẩu "> <br>
+      <input type="text" name="code" class="form-control" value="" placeholder="Code" required> <br>
+      <input type="text" name="password" class="form-control" value="" placeholder="Mật khẩu " required> <br>
       {% for message in get_flashed_messages() %}
-       <p>{{ message }}</p>
+       <small style="color: red">{{ message }}</small>
       {% endfor %}
-      <input type="submit" name="" class="form-control" value="Đăng nhập vào cây" style="cursor: pointer">
+      <br>
+      <input type="submit" name="" class="btn btn-primary" value="Tham Gia" style="cursor: pointer"><br><br>
+      <small style="color: red">Note: *Nếu bạn đã trong nhóm khác rồi không thể vào nhóm mới</small>
     </form>
   </div>
 

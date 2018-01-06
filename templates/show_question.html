@@ -1,19 +1,33 @@
 {% extends 'base.html' %}
 
+{% block css_link %}
+<link rel="stylesheet" href="../static/css/question.css">
+{% endblock %}
+
 {% block page_content %}
 
-  <div class="question">
-    <h3 class="text-success">Xin chào thành viên {{ username }}</h2>
+  <div class="question bg-light my-4">
+    <h2 class="text-success">Xin chào thành viên {{ username }}</h2>
     <h3 class="text-primary" > Câu hỏi về thành viên {{question.username}} trong nhóm {{ code }}</h3>
 
     <form class="container" method="post">
       <!-- Tạo một input ẩn chứa ID của lần random đầu tiên,khi đẩy form ta lấy lại id này xuống -->
         <input type="text" name="values" value="{{ question.id }}" style="display: none;">
-        <label>{{ question.question }}</label><br>
-        <label>{{ question.answer1 }}</label><br>
-        <label>{{ question.answer2 }}</label><br>
-        <label>{{ question.answer3 }}</label><br>
-        <label>{{ question.answer4 }}</label><br>
+          <h4>{{ question.question }}</h4>
+          <ol>
+            <li>
+              {{ question.answer1 }}
+            </li>
+            <li>
+              {{ question.answer2 }}
+            </li>
+            <li>
+              {{ question.answer3 }}
+            </li>
+            <li>
+              {{ question.answer4 }}
+            </li>
+          </ol>
 
       <input type="text" name="right_answer" class="form-control" value="" placeholder="Đáp án"> <br>
       <input type="submit" value="Nhập Câu Trả Lời">

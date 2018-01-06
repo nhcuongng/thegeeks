@@ -68,8 +68,6 @@ def create_tree():
             code = form['code']
             password = form['password']
             username = session['username']
-            # images = Image.objects()
-            # image = choice(images)
             user = User.objects(username = username).first()
             check_tree = Tree.objects(code = code).first()
             if user.tree_id:
@@ -91,7 +89,6 @@ def create_tree():
 @app.route('/logout')
 def logout():
     session['loggedin'] = False
-    flash('Bạn có muốn Đăng nhập lại không?')
     flash('Bạn Muốn Đăng nhập lại không?')
     return redirect(url_for('signin'))
 

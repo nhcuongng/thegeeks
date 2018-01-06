@@ -1,3 +1,9 @@
+
+body{
+  background-image: url("https://s-i.huffpost.com/gen/813511/images/o-FRIENDSHIP-facebook.jpg");
+  object-fit: cover;
+}
+
 .card_item{
   border-radius: 20px;
   margin-top: 20px;
@@ -24,4 +30,23 @@
 .btn-primary a{
   color: white;
   text-decoration: none;
+}
+
+.chart-table{
+  width: 25%;
+  display: inline-flex;
+  float: right;
+  margin-left: 0px;
+}
+
+.bxh{
+  text-align: center;
+  border-top: 0.7px solid #CCC;
+  border-bottom: 0.7px solid #CCC;
+  margin-bottom: 20px;
+
+}
+
+td{
+  color: white;
 }

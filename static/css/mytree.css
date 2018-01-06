@@ -1,3 +1,8 @@
+
+body{
+  background-image: url("https://d303ny97lru840.cloudfront.net/k-577a160c047c994bb7e5b397/20170727-nativew27-quiz/o-friendship-facebook.jpg");
+}
+
 *{
   padding: 0;
   margin: 0;
@@ -47,11 +52,23 @@
 
 .option{
   margin-top: 10%;
-  margin-left: auto;
-  margin-right: auto;
+  text-align: center;
+}
+
+.option button{
+  margin-right: 10px;
 }
 
 .option a:hover{
   color: #f7cac9;
   text-decoration: none;
+}
+button a{
+  color: white;
+}
+
+.img{
+  width: 500px;
+  height: 400px;
+  text-align: center;
 }

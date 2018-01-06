@@ -1,10 +1,29 @@
+
+body{
+  background-image: url("https://d303ny97lru840.cloudfront.net/k-577a160c047c994bb7e5b397/20170727-nativew27-quiz/o-friendship-facebook.jpg");
+  object-fit: contain;
+}
+
+.more{
+  margin-top: 40px;
+  border-top: 0.7px solid #CCC;
+  border-bottom: 0.7px solid #CCC;
+  text-align: center;
+}
+
+.more b{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
 #signin{
-  width: 350px;
+  width: 400px;
   height: 400px;
   margin-left: auto;
   margin-right: auto;
-  background-color: #f7cac9;
+  background-color: #CFDEF3;
   margin-top: 30px;
+  margin-bottom: 50px;
 }
 
 .signin-title{
@@ -33,13 +52,4 @@
   border-radius: 25px;
   border: None;
   margin-bottom: 15px;
-}
-
-footer{
-  text-align: center;
-  margin-top: 20px;
-}
-
-footer span{
-  font-size: 0.75em;
 }

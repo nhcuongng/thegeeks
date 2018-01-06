@@ -7,8 +7,8 @@
   <div id="signup">
 
     <header>
-      <h3 class="signup-title" >Đăng Ký</h3>
-      <img class="signup-img" src="https://t00.deviantart.net/hP7ifWFEZBm7C4fcN9msyUr4SfM=/fit-in/700x350/filters:fixed_height(100,100):origin()/pre00/99d4/th/pre/f/2014/052/4/1/giggles__by_retro35923-d77fdmo.png" alt="">
+      <h2 class="signup-title" >Đăng Ký</h2><br>
+      <img class="signup-img" src="http://welcomemovement.se/wp-content/uploads/2017/02/Handshake.png" alt="">
     </header>
 
     <div class="signup-signup">
@@ -20,16 +20,19 @@
         {% for message in get_flashed_messages() %}
          <p>{{ message }}</p>
         {% endfor %}
-        <input type="submit" name="" class="form-control" value="Đăng Ký" style=" cursor: pointer; background-color: #91a7d0; width: 50%; margin-left: 25%">
+        <div class="container" style="text-align: center">
+          <input type="submit" name="" class="form-control" value="Đăng Ký" style=" cursor: pointer; background-color: #91a7d0; width: 50%;">
+          <br><small>Nếu đã có tài khoản,chọn </small><br>
+          <a href="/signin" style="color: green">Đăng nhập</a>
+        </div>
       </form>
     </div>
 
-    <footer>
-      <span>Nếu đã có tài khoản</span>
-      <a href="/signin">Đăng nhập</a>
-    </footer>
-
   </div>
+  <!-- <footer class="container">
+    <span>Nếu đã có tài khoản,chọn </span><br>
+    <a href="/signin" style="color: green">Đăng nhập</a>
+  </footer> -->
 
 
 {% endblock %}

@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block css_link %}
+  <link rel="stylesheet" href="../static/css/index.css">
+{% endblock %}
+
 {% block title %}
 Trang chủ
 {% endblock %}
@@ -7,67 +11,77 @@ Trang chủ
 {% block page_content %}
 
 
-<div class="container mt-4">
+<div class="container">
   <div class="row">
-    {% for tree in trees %}
-    <div class="col-md-3 ml-4 card card_item">
-      <div class="card-title">
-        <p class="mt-3" style="text-align: center; font-family: 'Vibur', cursive;"> {{ tree.code }}</p>
-      </div>
-      <div class="card-body">
-        <div class="row">
-          {% for owner in tree.owners %}
-            {% if owner.username: %}
-              <div class="col-md-4 pr-1">
-                <div class="pl-1">
-                  <img src="https://raisingfilms.madeopen.co.uk/img/profile-pic.svg" alt="" width="24px" height="24px" style="border-radius: 20px" >
-                </div>
-                <p style="font-size: 0.8em; "> {{ owner.username }}</p>
-              </div>
-            {% endif %}
-          {% endfor %}
+    <div class="col-lg-8" style="padding-right: 0px;">
+      <div class="row">
+        {% for tree in trees %}
+        <div class="col-lg-5 ml-3 card card_item mb-4">
+          <div class="card-title" style="border-bottom: 0.7px dotted #CCC">
+            <p class="mt-3" style="text-align: center;">Tên Nhóm: {{ tree.code }}</p>
+          </div>
+          <div class="card-body">
+            <p>Thành Viên:</p>
+            <div class="row">
+              {% for owner in tree.owners %}
+                {% if owner.username: %}
+                  <div class="col-md-4 pr-1">
+                    <div class="pl-1">
+                      <img src="https://image.flaticon.com/icons/png/128/74/74472.png" alt="" width="24px" height="24px" style="border-radius: 20px" >
+                    </div>
+                    <p style="font-size: 0.8em; "> {{ owner.username }}</p>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+          {% if tree.point < 0 %}
+          <div class="">
+            <p style="text-align: center; color: red">Điểm: {{ tree.point }}</p>
+          </div>
+          {% else %}
+          <div class="">
+            <p style="text-align: center; color: blue">Điểm: {{ tree.point }}</p>
+          </div>
+          {% endif %}
+          <div class="card-footer" style="border-top: 0.7px dotted #CCC">
+            <small class="text-muted" style="font-size: 0.8em">Created</small>
+            <button type="button" class="btn btn-primary" name="button" style="float: right;" >
+              <i class="fa fa-sign-in" aria-hidden="true"></i>
+              <a href="/signin_to_tree">Tham gia</a>
+            </button>
+          </div>
         </div>
-      </div>
-
-      {% if tree.point < 0 %}
-      <div class="">
-        <p style="text-align: center; color: red">Điểm: {{ tree.point }}</p>
-      </div>
-      {% else %}
-      <div class="">
-        <p style="text-align: center; color: blue">Điểm: {{ tree.point }}</p>
-      </div>
-      {% endif %}
-      <div class="card-footer">
-        <small class="text-muted" style="font-size: 0.5em">04/01/2018</small>
-        <button type="button" class="btn btn-primary" name="button" >
-          <a href="/signin_to_tree">Tham gia</a>
-        </button>
+        {% endfor %}
       </div>
     </div>
-    {% endfor %}
+    <div class="col-lg-4" style="padding-left: 0px;" >
+      <div class="row">
+        <div class="container bxh mt-4 ">
+          <p style="margin: 10px 0px 10px 0px;font-weight: bold">Bảng Xếp hạng</p>
+        </div>
+        <div class="chart-table container col-lg-12">
+          <table class="table">
+            <thead class="thead-light">
+              <tr>
+                <th>Tên cây</th>
+                <th>Tình Trạng Sống còn</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% set sort_on = request.args.sort_on|default('point') %}
+              {% for tree in trees|sort(attribute = sort_on, reverse = True) %}
+                <tr>
+                  <td><strong>{{ tree.code }}</strong></td>
+                  <td> <b>{{ tree.point }}</b> </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-
-<!-- <div class="container">
-  <table class="table">
-    <thead class="thead-light">
-      <tr>
-        <th>STT</th>
-        <th>Tên cây</th>
-        <th>Điểm</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for tree in trees %}
-        <tr>
-          <td></td>
-          <td>{{ tree.code }}</td>
-          <td>{{ tree.point }}</td>
-        </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-</div> -->
 
 {% endblock %}

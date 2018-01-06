@@ -7,42 +7,44 @@
       {% block title %}
       {% endblock %}
     </title>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script> -->
+    <script type="text/javascript" src = "../static/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src = "../static/js/popper.js"></script>
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+    <script src="https://use.fontawesome.com/dfc9ca6b14.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <link rel="stylesheet" href="../static/css/index.css">
-    <link rel="stylesheet" href="../static/css/card.css">
-    <link rel="stylesheet" href="../static/css/heard.css">
-    <link rel="stylesheet" href="../static/css/question.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="../static/css/base.css">
+    {% block css_link %}
+    {% endblock %}
   </head>
+  <header style="background-color: #2c3e50">
+    <p class="logo"><a href="/" title="Trang chủ">The Geeks</a>
+      <small>Innovation for friendships</small>
+    </p>
 
-  <header style="background-color: white">
-    <p class="logo"><a href="/" title="Trang chủ">The Geeks</a></p>
-
-    <div class="infor">
+    <div class="infor ml-auto">
       {% if not session['loggedin'] %}
       <div class="nav signin">
-        <a class="nav-link nav-item" href="{{ url_for('signin') }}">Đăng nhập</a>
-        <a class="nav-link nav-item" href="/signup">Đăng Ký</a>
+        <a class="nav-link nav-item" style="color: white; border-right: 0.7px solid #CCC" href="{{ url_for('signin') }}">Đăng nhập</a>
+        <a class="nav-link nav-item" style="color: white;" href="/signup">Đăng Ký</a>
       </div>
       {% else %}
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
-          <img  src="https://raisingfilms.madeopen.co.uk/img/profile-pic.svg" alt="" width="24px" height="24px" style="border-radius: 20px" >
-        </a>
-        <div class="dropdown-menu">
-          <a class="dropdown-menu-item" href="{{ url_for('logout') }}">Đăng xuất</a>
-        </div>
+
+          <a class="nav-link nav-item" style="color: white;" href="{{ url_for('logout') }}">Đăng Xuất</a>
+
       {% endif %}
     </div>
 
     <nav style="background-color: #91a7d0">
-      <ul class="nav justify-content-center">
+      <ul class="nav">
         <li class="nav-item">
-          <a class="nav-link nav-item" href="/">Trang chủ</a>
+          <a class="nav-link nav-item" href="/"><i class="fa fa-home" aria-hidden="true"></i> Trang chủ</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/signin_to_tree">Tham gia vào cây</a>
@@ -55,27 +57,12 @@
       </ul>
     </nav>
   </header>
-
   <body>
-
     {% block page_content %}
     {% endblock %}
-
   </body>
-
-  <!-- <footer>
-    <div class="">
-      <h3>The Geeks</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua </p>
-    </div>
-
-    <div class="">
-      <ul>
-        <li> <a href="#">Facebook</a> </li>
-        <li> <a href="#">Instargram</a> </li>
-        <li> <a href="#">Youtube</a> </li>
-      </ul>
-    </div>
-  </footer> -->
-
+  <footer class="container-fluid">
+      <b>@TheGeeks: Chúng Tôi luôn nỗ lực vì bạn và bạn của bạn</b><br>
+      <small>---Devs---</small>
+  </footer>
 </html>

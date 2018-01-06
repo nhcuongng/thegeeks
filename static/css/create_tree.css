@@ -1,10 +1,22 @@
+
+body{
+  background-color: #CCC;
+}
+
+img{
+  
+  width: 400px;
+  height: 200px;
+}
+
 .create_tree{
-  width: 350px;
-  height: 250px;
+  width: 500px;
+  height: 500px;
   margin-left: auto;
   margin-right: auto;
   background-color: #f7cac9;
   margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .create_tree p{

@@ -1,10 +1,24 @@
+
+body{
+  background-color: #CCC;
+}
+
+img{
+  weight: 300px;
+  height: 200px;
+  float: right;
+}
+
 .totree{
-  width: 350px;
-  height: 250px;
+  width: 500px;
+  height: 500px;
   margin-left: auto;
   margin-right: auto;
   background-color: #f7cac9;
-  margin-top: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+
 }
 
 .totree p{
